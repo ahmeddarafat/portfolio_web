@@ -205,7 +205,7 @@ export const projects = [
             'Educational platform with over 10,000 downloads covering all educational stages. Users can purchase courses, earn in-app points, watch video tutorials, take exams, and read study notes. Managed through a robust control panel.',
         tags: ['Flutter', 'Video Streaming', 'Payment', 'BLoC', '10K+ Downloads'],
         storeLinks: { appStore: 'https://apps.apple.com/eg/app/azcourses/id1592327429', playStore: 'https://play.google.com/store/apps/details?id=com.crazyidea.azcourses' },
-        highlight: true,
+        // highlight: true,
     },
     {
         name: 'Orbit — Engineering & Real Estate',

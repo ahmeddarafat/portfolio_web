@@ -42,7 +42,7 @@ export default function Projects() {
         <h2 className="section-title" data-reveal data-delay="1"><span>Projects</span></h2>
         <p className="section-subtitle" data-reveal data-delay="2">Apps published on App Store &amp; Google Play</p>
 
-        <div className="filter-tabs">
+        {/* <div className="filter-tabs">
           {categories.map((c) => (
             <button
               key={c}
@@ -52,7 +52,7 @@ export default function Projects() {
               {c}
             </button>
           ))}
-        </div>
+        </div> */}
 
         <div className="projects-grid">
           {filtered.map((project, index) => (

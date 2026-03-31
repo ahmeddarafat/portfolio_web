@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react'
 import './Hero.css'
 import { personalInfo } from '../data/portfolio'
 
-const devTitles = [personalInfo.title, 'Mobile Engineer', 'BLoC Architect', 'Clean Code Advocate']
+const devTitles = [personalInfo.title, 'Mobile Engineer', 'Software Engineer']
 const [firstName, ...rest] = personalInfo.name.split(' ')
 const lastName = rest.join(' ')
 
