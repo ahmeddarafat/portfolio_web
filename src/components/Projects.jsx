@@ -67,15 +67,37 @@ export default function Projects() {
                 ))}
               </div>
               <div className="project-footer">
-                {project.storeLinks.playStore && (
-                  <span className="store-link">
-                    <PlayStoreIcon /> Google Play
-                  </span>
-                )}
-                {project.storeLinks.appStore && (
-                  <span className="store-link">
-                    <AppStoreIcon /> App Store
-                  </span>
+                {project.apps ? (
+                  project.apps.map((app) => (
+                    <div key={app.label} className="app-store-group">
+                      <span className="app-label">{app.label}</span>
+                      <div className="app-store-links">
+                        {app.playStore && (
+                          <a href={app.playStore} target="_blank" rel="noopener noreferrer" className="store-link store-link-btn">
+                            <PlayStoreIcon /> Play
+                          </a>
+                        )}
+                        {app.appStore && (
+                          <a href={app.appStore} target="_blank" rel="noopener noreferrer" className="store-link store-link-btn">
+                            <AppStoreIcon /> iOS
+                          </a>
+                        )}
+                      </div>
+                    </div>
+                  ))
+                ) : (
+                  <>
+                    {project.storeLinks.playStore && (
+                      <a href={project.storeLinks.playStore} target="_blank" rel="noopener noreferrer" className="store-link store-link-btn">
+                        <PlayStoreIcon /> Google Play
+                      </a>
+                    )}
+                    {project.storeLinks.appStore && (
+                      <a href={project.storeLinks.appStore} target="_blank" rel="noopener noreferrer" className="store-link store-link-btn">
+                        <AppStoreIcon /> App Store
+                      </a>
+                    )}
+                  </>
                 )}
               </div>
             </div>
