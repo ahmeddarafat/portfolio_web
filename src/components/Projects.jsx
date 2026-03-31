@@ -2,6 +2,18 @@ import { useState } from 'react'
 import './Projects.css'
 import { projects, projectCategories as categories } from '../data/portfolio'
 
+function handleTilt(e, el) {
+  el.style.transition = 'transform 0.08s linear, border-color 0.2s, background 0.2s, box-shadow 0.2s'
+  const rect = el.getBoundingClientRect()
+  const x = (e.clientX - rect.left) / rect.width - 0.5
+  const y = (e.clientY - rect.top) / rect.height - 0.5
+  el.style.transform = `perspective(800px) rotateY(${x * 14}deg) rotateX(${-y * 14}deg) translateZ(8px)`
+}
+function resetTilt(el) {
+  el.style.transition = 'transform 0.5s cubic-bezier(0.16,1,0.3,1), border-color 0.2s, background 0.2s, box-shadow 0.2s'
+  el.style.transform = ''
+}
+
 const platformIcons = {
   iOS: (
     <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
@@ -26,9 +38,9 @@ export default function Projects() {
   return (
     <section id="projects" className="projects-section">
       <div className="container">
-        <p className="section-label">What I've built</p>
-        <h2 className="section-title"><span>Projects</span></h2>
-        <p className="section-subtitle">Apps published on App Store & Google Play</p>
+        <p className="section-label" data-reveal>What I've built</p>
+        <h2 className="section-title" data-reveal data-delay="1"><span>Projects</span></h2>
+        <p className="section-subtitle" data-reveal data-delay="2">Apps published on App Store &amp; Google Play</p>
 
         <div className="filter-tabs">
           {categories.map((c) => (
@@ -43,8 +55,15 @@ export default function Projects() {
         </div>
 
         <div className="projects-grid">
-          {filtered.map((project) => (
-            <div key={project.name} className={`project-card ${project.highlight ? 'highlight' : ''}`}>
+          {filtered.map((project, index) => (
+            <div
+              key={project.name}
+              className={`project-card ${project.highlight ? 'highlight' : ''}`}
+              data-reveal="scale"
+              data-delay={String((index % 3) + 1)}
+              onMouseMove={(e) => handleTilt(e, e.currentTarget)}
+              onMouseLeave={(e) => resetTilt(e.currentTarget)}
+            >
               {project.highlight && <div className="highlight-badge">⭐ Featured</div>}
               <div className="project-header">
                 <div>

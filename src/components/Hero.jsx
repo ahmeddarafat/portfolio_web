@@ -1,6 +1,8 @@
+import { useState, useEffect } from 'react'
 import './Hero.css'
 import { personalInfo } from '../data/portfolio'
 
+const devTitles = [personalInfo.title, 'Mobile Engineer', 'BLoC Architect', 'Clean Code Advocate']
 const [firstName, ...rest] = personalInfo.name.split(' ')
 const lastName = rest.join(' ')
 
@@ -11,6 +13,7 @@ export default function Hero() {
         <div className="hero-blob blob1" />
         <div className="hero-blob blob2" />
         <div className="grid-overlay" />
+        <Particles />
       </div>
 
       <div className="container hero-content">
@@ -27,7 +30,7 @@ export default function Hero() {
             <span className="flutter-icon">
               <FlutterLogo />
             </span>
-            {personalInfo.title}
+            <Typewriter words={devTitles} />
           </h2>
           <p className="hero-summary">{personalInfo.summary}</p>
 
@@ -80,6 +83,58 @@ export default function Hero() {
       </a>
     </section>
   )
+}
+
+const PARTICLES = Array.from({ length: 18 }, (_, i) => ({
+  id: i,
+  x: `${(i * 5.5 + 2) % 100}%`,
+  y: `${(i * 7.3 + 5) % 100}%`,
+  size: (i % 3) + 1.5,
+  dur: `${(i % 4) + 4}s`,
+  delay: `${(i * 0.4) % 3}s`,
+}))
+
+function Particles() {
+  return (
+    <div className="particles" aria-hidden="true">
+      {PARTICLES.map((p) => (
+        <div
+          key={p.id}
+          className="particle"
+          style={{ left: p.x, top: p.y, width: p.size, height: p.size,
+                   animationDuration: p.dur, animationDelay: p.delay }}
+        />
+      ))}
+    </div>
+  )
+}
+
+function Typewriter({ words }) {
+  const [idx, setIdx] = useState(0)
+  const [text, setText] = useState('')
+  const [deleting, setDeleting] = useState(false)
+
+  useEffect(() => {
+    const word = words[idx]
+    let timeout
+    if (!deleting) {
+      if (text.length < word.length) {
+        timeout = setTimeout(() => setText(word.slice(0, text.length + 1)), 80)
+      } else {
+        timeout = setTimeout(() => setDeleting(true), 2200)
+      }
+    } else {
+      if (text.length > 0) {
+        timeout = setTimeout(() => setText(text.slice(0, -1)), 45)
+      } else {
+        setDeleting(false)
+        setIdx((i) => (i + 1) % words.length)
+      }
+    }
+    return () => clearTimeout(timeout)
+  }, [text, deleting, idx, words])
+
+  return <span>{text}<span className="type-cursor">|</span></span>
 }
 
 function FlutterLogo() {

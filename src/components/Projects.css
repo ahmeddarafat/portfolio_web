@@ -42,15 +42,16 @@
   border-radius: var(--radius-lg);
   padding: 24px;
   position: relative;
-  transition: all 0.2s;
+  transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
   display: flex;
   flex-direction: column;
   gap: 14px;
+  transform-style: preserve-3d;
+  will-change: transform;
 }
 .project-card:hover {
   border-color: var(--border-accent);
   background: var(--bg-card-hover);
-  transform: translateY(-3px);
   box-shadow: var(--shadow-accent);
 }
 .project-card.highlight {

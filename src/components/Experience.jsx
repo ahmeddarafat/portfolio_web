@@ -12,13 +12,16 @@ export default function Experience() {
   return (
     <section id="experience" className="exp-section">
       <div className="container">
-        <p className="section-label">Where I've worked</p>
-        <h2 className="section-title"><span>Experience</span></h2>
-        <p className="section-subtitle">My professional journey</p>
+        <p className="section-label" data-reveal>Where I've worked</p>
+        <h2 className="section-title" data-reveal data-delay="1"><span>Experience</span></h2>
+        <p className="section-subtitle" data-reveal data-delay="2">My professional journey</p>
 
         <div className="timeline">
           {jobs.map((job, i) => (
-            <div key={i} className={`timeline-item ${job.current ? 'current' : ''}`}>
+            <div key={i} className={`timeline-item ${job.current ? 'current' : ''}`}
+              data-reveal
+              data-delay={String((i % 6) + 1)}
+            >
               <div className="timeline-dot">
                 {job.current && <div className="dot-pulse" />}
               </div>

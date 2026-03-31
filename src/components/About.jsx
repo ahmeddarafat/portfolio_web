@@ -1,16 +1,49 @@
+import { useState, useEffect, useRef } from 'react'
 import './About.css'
 import { personalInfo, aboutStats } from '../data/portfolio'
+
+function CountUp({ value }) {
+  const [display, setDisplay] = useState(value)
+  const ref = useRef()
+  const started = useRef(false)
+  useEffect(() => {
+    const match = value.match(/^([\d.]+)(.*)$/)
+    if (!match) return
+    const target = parseFloat(match[1])
+    const suffix = match[2]
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting && !started.current) {
+          started.current = true
+          const t0 = performance.now()
+          const tick = (now) => {
+            const p = Math.min((now - t0) / 1500, 1)
+            const eased = 1 - Math.pow(1 - p, 3)
+            setDisplay(Math.ceil(target * eased) + suffix)
+            if (p < 1) requestAnimationFrame(tick)
+          }
+          requestAnimationFrame(tick)
+          observer.disconnect()
+        }
+      },
+      { threshold: 0.5 }
+    )
+    observer.observe(ref.current)
+    return () => observer.disconnect()
+  }, [value])
+  return <span ref={ref} className="stat-number">{display}</span>
+}
 
 export default function About() {
   return (
     <section id="about" className="about-section">
       <div className="container">
-        <p className="section-label">Who I am</p>
-        <h2 className="section-title"><span>About Me</span></h2>
-        <p className="section-subtitle">A brief introduction</p>
+        <p className="section-label" data-reveal>Who I am</p>
+        <h2 className="section-title" data-reveal data-delay="1"><span>About Me</span></h2>
+        <p className="section-subtitle" data-reveal data-delay="2">A brief introduction</p>
 
         <div className="about-grid">
-          <div className="about-text">
+          <div className="about-text" data-reveal="left">
             <p>
               I'm a <strong>Flutter Developer</strong> based in Cairo, Egypt, with a Bachelor's in
               Computer and Control Systems Engineering from Mansoura University.
@@ -52,9 +85,9 @@ export default function About() {
             </div>
           </div>
 
-          <div className="about-stats">
+          <div className="about-stats" data-reveal="right">
             {aboutStats.map((s, i) => (
-              <div key={i} className="stat-card">
+              <div key={i} className="stat-card" data-reveal="scale" data-delay={String(i + 1)}>
                 {s.icon ? (
                   <>
                     <span className="stat-icon">{s.icon}</span>
@@ -63,7 +96,7 @@ export default function About() {
                   </>
                 ) : (
                   <>
-                    <span className="stat-number">{s.number}</span>
+                  <CountUp value={s.number} />
                     <span className="stat-label">{s.label}</span>
                   </>
                 )}
