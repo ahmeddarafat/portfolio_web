@@ -98,7 +98,6 @@ export default function Contact() {
           <p className="footer-copy">
             Designed & built by <span className="gradient-text">Ahmed Arafat</span> · {new Date().getFullYear()}
           </p>
-          <p className="footer-tech">Built with React + Vite</p>
         </div>
       </footer>
     </section>
