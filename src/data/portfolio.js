@@ -16,10 +16,7 @@ export const personalInfo = {
         'Clean architecture enthusiast with a focus on scalable code and great user experiences.',
     openToWork: true,
 
-    // CV file — place your PDF at public/cv.pdf and it will be served at /cv.pdf
-    cvUrl: '/Ahmed_Arafat_Flutter.pdf',
-
-    // Social links — update these with your real URLs
+    resumeLink: '/Ahmed_Arafat_Flutter.pdf',
     links: {
         github: 'https://github.com/ahmeddarafat',
         gitlab: 'https://gitlab.com/arafatt',

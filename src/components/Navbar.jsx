@@ -30,7 +30,7 @@ export default function Navbar() {
           <span className="logo-slash"> /</span>
           <span className="logo-bracket">&gt;</span>
         </a>
-
+ 
         <button
           className={`hamburger ${menuOpen ? 'open' : ''}`}
           onClick={() => setMenuOpen(!menuOpen)}
@@ -49,22 +49,22 @@ export default function Navbar() {
           ))}
           <li>
             <a
-              href={personalInfo.cvUrl}
+              href={personalInfo.resumeLink}
               download
               className="nav-cta"
             >
-              Download CV
+              Resume
             </a>
           </li>
           <li>
-            <a
+            {/* <a
               href="https://www.linkedin.com/in/ahmed-arafat-064621231/"
               target="_blank"
               rel="noopener noreferrer"
               className="nav-cta"
             >
               Hire Me
-            </a>
+            </a> */}
           </li>
         </ul>
       </div>
