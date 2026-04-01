@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import './Navbar.css'
+import { personalInfo } from '../data/portfolio'
 
 const links = [
   { href: '#about', label: 'About' },
@@ -46,6 +47,15 @@ export default function Navbar() {
               </a>
             </li>
           ))}
+          <li>
+            <a
+              href={personalInfo.cvUrl}
+              download
+              className="nav-cta"
+            >
+              Download CV
+            </a>
+          </li>
           <li>
             <a
               href="https://www.linkedin.com/in/ahmed-arafat-064621231/"

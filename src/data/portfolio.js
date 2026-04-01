@@ -16,6 +16,9 @@ export const personalInfo = {
         'Clean architecture enthusiast with a focus on scalable code and great user experiences.',
     openToWork: true,
 
+    // CV file — place your PDF at public/cv.pdf and it will be served at /cv.pdf
+    cvUrl: '/Ahmed_Arafat_Flutter.pdf',
+
     // Social links — update these with your real URLs
     links: {
         github: 'https://github.com/ahmeddarafat',
@@ -78,7 +81,7 @@ export const skillGroups = [
     {
         title: 'Tools',
         icon: '🛠️',
-        skills: ['Git', 'GitHub','GitLab', 'Postman', 'Figma', 'CI/CD', 'Agile', "Github Copilot", 'Cursor', "Antigravity", "Claude Dev", "Shell Scripts" ],
+        skills: ['Git', 'GitHub', 'GitLab', 'Postman', 'Figma', 'CI/CD', 'Agile', "Github Copilot", 'Cursor', "Antigravity", "Claude Dev", "Shell Scripts"],
     },
 ]
 
@@ -215,6 +218,15 @@ export const projects = [
             'Comprehensive platform connecting users with professional engineers and real estate experts for construction, design, and investment decisions. Integrated consulting and real estate services in one solution.',
         tags: ['Flutter', 'Consulting', 'Real Estate', 'Clean Architecture'],
         storeLinks: { appStore: null, playStore: 'https://play.google.com/store/apps/details?id=com.techlab.orbit.client' },
+    },
+    {
+        name: 'WSG - Auto Parts Ecosystem',
+        category: 'E-commerce',
+        platforms: ['iOS', 'Android'],
+        description:
+            'A unique platform for buying and selling car auto parts. Features a dual-user journey: Traders purchase directly from providers with fast delivery and earn redeemable points, while Customers buy from trader markets and earn points for future discounts. Simplifies the supply chain via an innovative rewards system.',
+        tags: ['Flutter', 'E-commerce', 'Loyalty System', 'Supply Chain'],
+        storeLinks: { appStore: 'https://apps.apple.com/us/app/wsg/id6756726740', playStore: 'https://play.google.com/store/apps/details?id=com.vlaro.wsg' },
     },
     {
         name: 'Sanadk & Sanadk Lawyer',
