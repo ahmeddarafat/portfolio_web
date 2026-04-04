@@ -49,7 +49,7 @@ export default function Navbar() {
           ))}
           <li>
             <a
-              href={personalInfo.resumeLink}
+              href={`${import.meta.env.BASE_URL}Ahmed_Arafat_Flutter.pdf`}
               target="_blank"
               rel="noopener noreferrer"
               className="nav-cta"
