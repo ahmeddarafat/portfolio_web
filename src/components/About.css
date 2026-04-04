@@ -10,6 +10,7 @@
   opacity: 0.8;
 }
 
+
 .about-grid {
   display: grid;
   grid-template-columns: 3fr 2fr;
